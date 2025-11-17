@@ -145,5 +145,6 @@ if __name__ == "__main__":
 
 
 # the commands to run everything in order:
-# 1. pip install -r requirements.txt
-# 2. 
+# 1. pip install -r requirements.txt (this installs all necessary flask packages)
+# 2. run python seed.py
+# 3. run python app.py
