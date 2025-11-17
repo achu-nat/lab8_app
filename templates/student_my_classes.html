@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>Your Classes</h3>
+
+<ul class="list-group">
+{% for c in classes %}
+  <li class="list-group-item">{{ c.name }}</li>
+{% endfor %}
+</ul>
+
+{% endblock %}

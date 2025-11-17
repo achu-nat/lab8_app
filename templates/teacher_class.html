@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3>{{ cls.name }}</h3>
+
+<table class="table table-bordered">
+<tr>
+  <th>Student</th>
+  <th>Grade</th>
+  <th>Action</th>
+</tr>
+
+{% for e in enrollments %}
+<tr>
+  <td>{{ e.student.username }}</td>
+  <td>{{ e.grade }}</td>
+  <td>
+    <form method="POST">
+      <input type="hidden" name="eid" value="{{ e.id }}">
+      <input name="grade" class="form-control" placeholder="Enter grade">
+      <button class="btn btn-primary btn-sm mt-1">Save</button>
+    </form>
+  </td>
+</tr>
+{% endfor %}
+</table>
+
+{% endblock %}

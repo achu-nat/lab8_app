@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>All Classes</h3>
+
+<ul class="list-group">
+{% for c in classes %}
+  <li class="list-group-item d-flex justify-content-between">
+    <span>{{ c.name }} — Capacity: {{ c.capacity }} — Enrolled: {{ c.enrollments|length }}</span>
+    <a class="btn btn-sm btn-success" href="/student/enroll/{{ c.id }}">Enroll</a>
+  </li>
+{% endfor %}
+</ul>
+
+{% endblock %}

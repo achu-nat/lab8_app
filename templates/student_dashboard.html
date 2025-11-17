@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Welcome {{ current_user.username }}!</h2>
+
+<a class="btn btn-primary" href="/student/my_classes">See My Classes</a>
+<a class="btn btn-success" href="/student/all_classes">Add Courses</a>
+
+{% endblock %}

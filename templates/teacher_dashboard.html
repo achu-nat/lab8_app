@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Welcome {{ current_user.username }}!</h2>
+
+<h4>Your Courses</h4>
+<ul class="list-group">
+{% for c in classes %}
+  <li class="list-group-item">
+    <a href="/teacher/class/{{ c.id }}">{{ c.name }}</a>
+  </li>
+{% endfor %}
+</ul>
+
+{% endblock %}
