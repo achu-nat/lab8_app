@@ -26,7 +26,7 @@ login_manager.login_view = "login"
 # --------------------------------------
 # Admin Panel (Flask-Admin)
 # --------------------------------------
-admin = Admin(application)
+admin = Admin(application, template_mode="bootstrap4", base_template="admin/master.html")
 admin.add_view(ModelView(User, db.session))
 admin.add_view(ModelView(Class, db.session))
 admin.add_view(ModelView(Enrollment, db.session))
