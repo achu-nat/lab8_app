@@ -148,9 +148,8 @@ if __name__ == "__main__":
 # 1. pip install -r requirements.txt (this installs all necessary flask packages)
 # 2. run python seed.py
 # 3. run python app.py
-#eeeee
 # these are the logins that work:
 # admin (username)/ admin (password)
 # mindy (username) / 123 (password)
-#c huck (username) / 123 (password)
+# chuck (username) / 123 (password)
 # ahepworth (username) / 123 (password)
