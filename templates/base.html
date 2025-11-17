@@ -9,23 +9,25 @@
     <div class="container d-flex justify-content-between">
         <span class="navbar-brand">ACME University</span>
 
-        {% if current_user.is_authenticated %}
-            {% if current_user.role == 'student' %}
-                <div>
-                    <a href="/student" class="btn btn-outline-light btn-sm">Dashboard</a>
-                    <a href="/student/my_classes" class="btn btn-outline-light btn-sm">My Classes</a>
-                    <a href="/student/all_classes" class="btn btn-outline-light btn-sm">All Classes</a>
-                </div>
-            {% elif current_user.role == 'teacher' %}
-                <div>
-                    <a href="/teacher" class="btn btn-outline-light btn-sm">Dashboard</a>
-                </div>
-            {% elif current_user.role == 'admin' %}
-                <div>
-                    <a href="/adminpage" class="btn btn-outline-light btn-sm">Admin Home</a>
-                    <a href="/admin" class="btn btn-outline-light btn-sm">Manage Data</a>
-                </div>
-            {% endif %}
+        {% if current_user.is_authenticated and current_user.is_authenticated != False and current_user.role %}
+    {% if current_user.role == 'student' %}
+        <div>
+            <a href="/student" class="btn btn-outline-light btn-sm">Dashboard</a>
+            <a href="/student/my_classes" class="btn btn-outline-light btn-sm">My Classes</a>
+            <a href="/student/all_classes" class="btn btn-outline-light btn-sm">All Classes</a>
+        </div>
+    {% elif current_user.role == 'teacher' %}
+        <div>
+            <a href="/teacher" class="btn btn-outline-light btn-sm">Dashboard</a>
+        </div>
+    {% elif current_user.role == 'admin' %}
+        <div>
+            <a href="/adminpage" class="btn btn-outline-light btn-sm">Admin Home</a>
+            <a href="/admin" class="btn btn-outline-light btn-sm">Manage Data</a>
+        </div>
+    {% endif %}
+    <a href="/logout" class="btn btn-danger btn-sm">Sign out</a>
+{% endif %}
 
             <a href="/logout" class="btn btn-danger btn-sm">Sign out</a>
         {% endif %}
