@@ -1,11 +1,19 @@
 {% extends "base.html" %}
 {% block content %}
-<h3>Your Classes</h3>
 
+<h3>My Classes</h3>
+
+{% if classes|length == 0 %}
+<p>You are not enrolled in any classes yet.</p>
+{% else %}
 <ul class="list-group">
-{% for c in classes %}
-  <li class="list-group-item">{{ c.name }}</li>
-{% endfor %}
+    {% for c in classes %}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        {{ c.name }}
+        <span class="badge bg-primary">Capacity: {{ c.capacity }}</span>
+    </li>
+    {% endfor %}
 </ul>
+{% endif %}
 
 {% endblock %}
