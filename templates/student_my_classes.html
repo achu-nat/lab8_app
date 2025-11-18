@@ -22,12 +22,6 @@
             </small><br>
             <small class="text-muted">Instructor: {{ c.teacher.username }}</small>
         </div>
-        <!-- <span class="badge bg-primary rounded-pill"> Capacity: {{ c.enrollments|length }} / {{ c.capacity }}</span> -->
-        <a href="/student/unenroll/{{ c.id }}" 
-               class="btn btn-danger btn-sm"
-               onclick="return confirm('Are you sure you want to unenroll from {{ c.name }}?');">
-               Unenroll
-            </a>
     </li>
     {% endfor %}
 </ul>
