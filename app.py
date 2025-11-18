@@ -81,7 +81,8 @@ def student_my_classes():
 @login_required
 def student_all_classes():
     classes = Class.query.all()
-    return render_template("student_all_classes.html", classes=classes)
+    my_ids = {e.class_id for e in current_user.enrollments}
+    return render_template("student_all_classes.html", classes=classes, my_ids=my_ids)
 
 
 @application.route("/student/enroll/<int:class_id>")
@@ -99,7 +100,7 @@ def enroll(class_id):
     enroll = Enrollment(student_id=current_user.id, class_id=class_id)
     db.session.add(enroll)
     db.session.commit()
-    return redirect("/student/my_classes")
+    return redirect("/student/all_classes")
 
 
 # --------------------------------------
