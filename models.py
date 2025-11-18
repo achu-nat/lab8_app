@@ -10,6 +10,8 @@ class User(UserMixin, db.Model):
     enrollments = db.relationship("Enrollment", backref="student", lazy=True)
     classes = db.relationship("Class", backref="teacher", lazy=True)
 
+    def __repr__(self):
+        return self.username
 
 class Class(db.Model):
     id = db.Column(db.Integer, primary_key=True)

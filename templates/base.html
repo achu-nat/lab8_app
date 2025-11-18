@@ -21,14 +21,14 @@
                 </div>
             {% elif current_user.role == 'teacher' %}
                 <div>
-                    <a href="/teacher" class="btn btn-outline-light btn-sm">Dashboard</a>
-                </div>
-            {% elif current_user.role == 'admin' %}
-                <div>
                     <a href="/adminpage" class="btn btn-outline-light btn-sm">Admin Home</a>
-                    <a href="/admin" class="btn btn-outline-light btn-sm">Manage Data</a>
-                </div>
-            {% endif %}
+                    <a href="/admin/user/" class="btn btn-outline-light btn-sm">Manage Data</a> 
+            {% elif current_user.role == 'admin' %}
+    <div>
+        <a href="/adminpage" class="btn btn-outline-light btn-sm">Admin Home</a>
+        <!-- <a href="/admin/user/" class="btn btn-outline-light btn-sm">Manage Data</a> -->
+    </div>
+{% endif %}
 
             <a href="/logout" class="btn btn-danger btn-sm">Sign out</a>
 

@@ -32,9 +32,21 @@ def load_user(user_id):
 # Admin Panel (Flask-Admin)
 # --------------------------------------
 # --------------------------------------
+
+class UserAdmin(ModelView):
+    form_excluded_columns = ['enrollments', 'classes']
+    form_excluded_columns = ['enrollments']
+
+class UserAdmin(ModelView):
+    form_excluded_columns = ['classes', 'enrollments']
+
+
+class ClassAdmin(ModelView):
+    form_excluded_columns = ['enrollments']
+    
 admin = Admin(application, name="ACME Admin")
-admin.add_view(ModelView(User, db.session))
-admin.add_view(ModelView(Class, db.session))
+admin.add_view(UserAdmin(User, db.session))
+admin.add_view(ClassAdmin(Class, db.session))
 admin.add_view(ModelView(Enrollment, db.session))
 
 
