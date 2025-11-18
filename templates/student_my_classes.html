@@ -14,9 +14,15 @@
     <li class="list-group-item d-flex justify-content-between align-items-center">
         <div>
             <strong>{{ c.name }}</strong><br>
+            <small class="text-muted">
+                Enrolled: {{ c.enrollments|length }} / {{ c.capacity }}
+                {% if c.enrollments|length >= c.capacity %}
+                    <span class="badge bg-danger ms-2">Full</span>
+                {% endif %}
+            </small><br>
             <small class="text-muted">Instructor: {{ c.teacher.username }}</small>
         </div>
-        <span class="badge bg-primary rounded-pill"> Capacity: {{ c.enrollments|length }} / {{ c.capacity }}</span>
+        <!-- <span class="badge bg-primary rounded-pill"> Capacity: {{ c.enrollments|length }} / {{ c.capacity }}</span> -->
         <a href="/student/unenroll/{{ c.id }}" 
                class="btn btn-danger btn-sm"
                onclick="return confirm('Are you sure you want to unenroll from {{ c.name }}?');">
