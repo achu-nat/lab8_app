@@ -20,10 +20,12 @@
 
     <div class="d-flex align-items-center">
         {% if c.id in my_ids %}
-            <span class="badge bg-success me-2">
-                ✓ Enrolled
-            </span>
-            <button class="btn btn-secondary btn-sm" disabled>Enroll</button>
+            <span class="badge bg-success me-2">✓ Enrolled</span>
+            <!-- <button class="btn btn-secondary btn-sm" disabled>Enroll</button> -->
+            <a href="/student/unenroll/{{ c.id }}" 
+               class="btn btn-danger btn-sm">
+               Unenroll
+            </a>
         {% else %}
             <a href="/student/enroll/{{ c.id }}" class="btn btn-success btn-sm">
                 Enroll

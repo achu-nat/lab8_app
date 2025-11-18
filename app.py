@@ -102,6 +102,16 @@ def enroll(class_id):
     db.session.commit()
     return redirect("/student/all_classes")
 
+@application.route("/student/unenroll/<int:class_id>")
+@login_required
+def unenroll(class_id):
+    enrollment = Enrollment.query.filter_by(student_id=current_user.id, class_id=class_id).first()
+    if not enrollment:
+        return "Not Enrolled in this class!"
+
+    db.session.delete(enrollment)
+    db.session.commit()
+    return redirect("/student/all_classes")
 
 # --------------------------------------
 # TEACHER ROUTES
