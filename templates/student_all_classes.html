@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
 
-<!-- <h3>All Classes Offered</h3> -->
  <h3 class="mb-3">All Classes Offered</h3>
 
 <ul class="list-group shadow-sm">
@@ -10,16 +9,27 @@
     
     <div>
         <strong>{{ c.name }}</strong><br>
-        <small class="text-muted">Enrolled: {{ c.enrollments|length }} / {{ c.capacity }}</small><br>
+        <small class="text-muted">
+          Enrolled: {{ c.enrollments|length }} / {{ c.capacity }}
+          {% if c.enrollments|length >= c.capacity %}
+            <span class="badge bg-danger ms-2">Full</span>
+          {% endif %}
+        </small><br>
         <small class="text-muted">Instructor: {{ c.teacher.username }}</small>
     </div>
 
-    <!-- <a href="/student/enroll/{{ c.id }}" class="btn btn-success btn-sm">Enroll</a> -->
-    {% if c.enrollments|length >= c.capacity %}
-        <button class="btn btn-secondary btn-sm" disabled>Full</button>
-    {% else %}
-        <a href="/student/enroll/{{ c.id }}" class="btn btn-success btn-sm">Enroll</a>
-    {% endif %}
+    <div class="d-flex align-items-center">
+        {% if c.id in my_ids %}
+            <span class="badge bg-success me-2">
+                ✓ Enrolled
+            </span>
+            <button class="btn btn-secondary btn-sm" disabled>Enroll</button>
+        {% else %}
+            <a href="/student/enroll/{{ c.id }}" class="btn btn-success btn-sm">
+                Enroll
+            </a>
+        {% endif %}
+    </div>
   </li>
 {% endfor %}
 </ul>
