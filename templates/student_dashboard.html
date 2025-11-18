@@ -1,13 +1,38 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h2>Welcome, {{ current_user.username }}!</h2>
+<div class="text-center">
+    <h2 class="mb-2">Welcome, {{ current_user.username }}!</h2>
+    <p class="text-muted">Select an option below to get started.</p>
+</div>
 
-<p>Select an option from the navigation bar above.</p>
+<div class="row mt-4 justify-content-center">
+    <div class="col-md-4">
+        <a class="text-decoration-none" href="/student/my_classes">
+            <div class="card shadow-sm border-0 hover-shadow">
+                <div class="card-body text-center">
+                    <h5 class="card-title">My Classes</h5>
+                    <p class="card-text text-muted">View the classes you're currently enrolled in.</p>
+                </div>
+            </div>
+        </a>
+    </div>
 
-<div class="mt-4">
+        <div class="col-md-4">
+        <a class="text-decoration-none" href="/student/all_classes">
+            <div class="card shadow-sm border-0 hover-shadow">
+                <div class="card-body text-center">
+                    <h5 class="card-title">All Classes</h5>
+                    <p class="card-text text-muted">Browse all classes offered this semester.</p>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+
+<!-- <div class="mt-4">
     <a class="btn btn-primary" href="/student/my_classes">View My Classes</a>
     <a class="btn btn-success" href="/student/all_classes">Browse All Classes</a>
-</div>
+</div> -->
 
 {% endblock %}
