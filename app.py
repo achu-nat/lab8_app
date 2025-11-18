@@ -109,6 +109,8 @@ def enroll(class_id):
 @application.route("/teacher")
 @login_required
 def teacher_dashboard():
+    if current_user.role != "teacher":
+        return redirect("/")
     classes = current_user.classes
     return render_template("teacher_dashboard.html", classes=classes)
 
@@ -116,15 +118,26 @@ def teacher_dashboard():
 @application.route("/teacher/class/<int:class_id>", methods=["GET", "POST"])
 @login_required
 def teacher_class(class_id):
+    if current_user.role != "teacher":
+        return redirect("/")
+
     cls = Class.query.get(class_id)
+
+    # prevent teachers from accessing other teachers' classes
+    if cls.teacher_id != current_user.id:
+        return "Unauthorized", 403
+
     enrollments = cls.enrollments
 
     if request.method == "POST":
         eid = request.form["eid"]
         grade = request.form["grade"]
+
         enr = Enrollment.query.get(eid)
         enr.grade = grade
         db.session.commit()
+
+        return redirect(f"/teacher/class/{class_id}")  # refresh after save
 
     return render_template("teacher_class.html", cls=cls, enrollments=enrollments)
 
@@ -149,9 +162,8 @@ if __name__ == "__main__":
 # 1. pip install -r requirements.txt (this installs all necessary flask packages)
 # 2. run python seed.py
 # 3. run python app.py
-# these are the logins that work:
-# admin (username)/ admin (password)
-# mindy (username) / 123 (password)
-# chuck (username) / 123 (password)
-# ahepworth (username) / 123 (password)
-# cnorris (username) / 123 (password)
+# logins:
+# admin/admin
+# mindy/123
+# chuck/123
+# ahepworth/123
